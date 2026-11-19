@@ -5,6 +5,13 @@
 const int SS_PIN = A0;
 const int RST_PIN = A1;
 
+
+#define BLYNK_TEMPLATE_ID "YOUR_TEMPLATE_ID"
+#define BLYNK_TEMPLATE_NAME "IT Checkout Admin"
+#define BLYNK_AUTH_TOKEN "YOUR_AUTH_TOKEN"
+
+#include <blynk.h>
+
 // OLED Setup
 #define PIN_RESET D9
 #define DC_JUMPER 1
@@ -42,9 +49,8 @@ User users[] = {
     User("USER003", "32 7F D0 55", false, 1)
 };
 
-const int NUM_USERS = sizeof(users); 
-
-
+const int NUM_USERS = sizeof(users); //keeps track of user amount in database
+int selectedUser = 0; // keeps track of which user is currently being viewed
 /****************************************************************************
 Item: Show message on OLED
 Purpose: Takes inputs for OLED and prints them out. Helps display user 
